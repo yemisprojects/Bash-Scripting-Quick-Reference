@@ -1,22 +1,13 @@
 #!/usr/bin/env bash
-#Start with env bash so your script can be run anywhere
+#Start with env bash so your script can be run anywhere. Shebang line is used to say what shell program is goint to be used to run the script
 
-#Multiline argument
-
-#Redirection Operators STDIN,STDOUT and STDERR. Note that some commands send success output to stderr such as `java -v``
-<<redirect_demo
-1>file1 redirects stdout(aka success) output to file1
-2>file2 redirects stderr(aka error) output to file2
-
-1>file1 2>file1 both stdout and stderr will redirect to same file1
-1>file1 2>&1    both stdout and stderr  will redirect to same file1;MAKE SURE  2>&1 comes after 1>file1
-&>file1         both stdout and stderr will redirect to same file1
-
-cat < advanced-demo.sh     read a file by redirecting 
-redirect_demo
+#Multiline argument. Note, space is required between : and '
+: '                 
+multiline
+'
 
 #How to pass multiline strings to a command. EOF and DELIM can be anything, but must close with same text
-<<DemoMultiline
+<< DemoMultiline
 $ cat << EOF > tests.txt                #EXAMPLE 1 terminal
 > line1
 > line2
@@ -29,7 +20,6 @@ cat << DELIM | grep direc               #EXAMPLE 2 in script
 user: $USER
 HOME directory $HOME
 DELIM
-
 DemoMultiline
 
 #When using comparison and file test operator you must use [[ ]] or [ ]
