@@ -7,7 +7,7 @@ test condition
 test condition && do_something || do_nothing_due_to_false
 [ condition ] && do_something || do_nothing_due_to_false
 '
-#The syntax with if command is as follows:
+#The syntax with if command is as follows: space is required beside [ and ]
 : '
 if [ condition ]; then
        do_run_this_due_to_true_condition
@@ -16,14 +16,54 @@ else
 fi
 '
 
+if [ <some test> ]
+then
+<commands>
+fi
+
+if [ <some test> ]
+then
+<commands>
+else
+<other commands>
+fi
+
+if [ <some test> ]
+then
+<commands>
+elif [ <some test> ]
+then
+<different commands>
+else
+<other commands>
+fi
+
+#The square brackets ( [ ] ) in the if statement above are actually a reference to the command test. This means that all of the operators that test allows may be used here as well.
+#Note that = and == are for comparing strings while -eq is for comparing integers
+Operator	Description
+! EXPRESSION	The EXPRESSION is false.
+-n STRING	The length of STRING is greater than zero.
+-z STRING	The lengh of STRING is zero (ie it is empty).
+STRING1 = STRING2	STRING1 is equal to STRING2
+STRING1 != STRING2	STRING1 is not equal to STRING2
+INTEGER1 -eq INTEGER2	INTEGER1 is numerically equal to INTEGER2
+INTEGER1 -gt INTEGER2	INTEGER1 is numerically greater than INTEGER2
+INTEGER1 -lt INTEGER2	INTEGER1 is numerically less than INTEGER2
+-d FILE	FILE exists and is a directory.
+-e FILE	FILE exists.
+-r FILE	FILE exists and the read permission is granted.
+-s FILE	FILE exists and it's size is greater than zero (ie. it is not empty).
+-w FILE	FILE exists and the write permission is granted.
+-x FILE	FILE exists and the execute permission is granted.
+
 
 <<summary
 Logical AND Operator && or -a
- will compare two inputs & if both are true, it will return true else false.
+- will compare two inputs & if both are true, it will return true else false.
 Logical OR Operator || or -o
- Will check two conditions will return true, if any of them is true & return false when both are false.
+- Will check two conditions will return true, if any of them is true & return false when both are false.
 Logical NOT Operator !
- will return true when the condition is false & return false if the condition is true.
+- will return true when the condition is false & return false if the condition is true.
 summary
 
 <<demonot
@@ -241,3 +281,9 @@ fi
 # else
 #     echo "$NUM is lower than 10"
 # fi
+
+
+if [$1 -gt 100]
+then 
+    echo "Hi, that is a large number"
+fi

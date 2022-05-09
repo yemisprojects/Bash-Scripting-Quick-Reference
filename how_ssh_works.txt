@@ -1,0 +1,9 @@
+The directive below in /etc/ssh/sshd_config dictates if password authentication will be allowed for logging in to any user via ssh 
+#PasswordAuthentication yes
+
+For passwordless authentication to work (i.e via keys) the  public key from the localuser ~/.ssh/id_rsa.pub must be copied to the remote users .ssh/authorizedkeys file
+
+A public-private key pair can be generated using ssh-keygen
+~/.ssh/id_rsa.pub is the public key
+~/.ssh/id_rsa is the private key
+The public key can be copied using ssh-copy-id command, after which you will be prompted for the remote user's login password(which means #PasswordAuthentication yes must be enabled)
