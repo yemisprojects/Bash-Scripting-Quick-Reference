@@ -1,7 +1,8 @@
 #syntax of awk
 
-awk [options] 'pattern/condition {action}' data_filename
-command | awk [options] 'pattern/condition {action}'
+awk [options] 'regexpattern/condition {action}' data_filename
+awk [options] '/regexpattern/ {action}' data_filename                 #Pattern is a regex pattern to search for and must be put within / /
+command | awk [options] 'regexpattern/condition {action}'
 awk '{}'                                    #this are the only manadatory fields; without a print statement no data will be displayed to standard out
 
 #awk scripting syntax
@@ -27,6 +28,22 @@ $1...$n - fields in each record
 NR - record number (same as line number)
 NF - number of fields in a line/record
 FILENAME - name of file on which the awk command is currently executed againts
+
+HOW TO USE pattern
+https://www.tecmint.com/use-linux-awk-command-to-filter-text-string-in-files/
+The example below prints all the lines in the file /etc/hosts since no pattern is given.
+# awk '//{print}' /etc/hosts
+127.0.0.1	localhost
+127.0.1.1	vagrant.vm	vagrant
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+127.0.2.1 lab1 lab1
+# awk '/localhost/{print}' /etc/hosts
+127.0.0.1	localhost
+::1     localhost ip6-localhost ip6-loopback
 
 Examples
 # cat /etc/passwd| head -2
