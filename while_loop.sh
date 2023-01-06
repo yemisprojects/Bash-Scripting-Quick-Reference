@@ -1,3 +1,5 @@
+#GOOD DOC on while loops: https://www.cyberciti.biz/faq/bash-while-loop/
+
 #!/usr/bin/env bash
 # while true
 # do 
