@@ -1,3 +1,5 @@
+#GOOD DOC on for loops: https://www.cyberciti.biz/faq/bash-for-loop/
+
 #!/usr/bin/env bash
 # for eachvalue in docker nginx
 # do 
