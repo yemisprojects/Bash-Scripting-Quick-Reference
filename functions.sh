@@ -1,5 +1,5 @@
 # Declaration of function
-# function function_name
+# function function_name()
 # {
 #     commands/statements
 # }
